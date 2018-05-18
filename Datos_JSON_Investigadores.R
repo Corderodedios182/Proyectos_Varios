@@ -1,5 +1,7 @@
 rm(list = ls())
 
+#El siguiente script traira la informacion JSON  sobre las publicaciones de 1959 a 2018,que se encuentran en los servidores privados.
+
 #install.packages("httr") ; install.packages("jsonlite")
 
 library(httr) ; library(jsonlite)
