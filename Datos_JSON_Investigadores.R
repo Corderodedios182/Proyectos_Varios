@@ -27,15 +27,15 @@ Datos_JSON <- function(año){
 }
 
 #Base para validacion de los datos, eh encontrado 10 variables en todos los ejercicio que eh realizado
-Base <- Datos_JSON(1959) #Tiene 2 datos y son correctos.
-Base <- Datos_JSON(2010) #Tiene 1 datos y es correcto.
-Base <- Datos_JSON(2015) #Tiene 205 datos y son correctos.
+Base_F <- Datos_JSON(1959) #Tiene 2 datos y son correctos.
 
+for (i in 1960:2018) {
+  eval(parse(text = paste0('Base_',i,' <- Datos_JSON(',i,')')))
+  eval(parse(text = paste0('Base_F <- rbind(Base_F,Base_',i,')')))
+  eval(parse(text = paste0('rm(Base_',i,')')))
+}
 
 #Siguientes pasos; 
-  # - Ir por todas las Base de 1959 a 2018.
-  # - Validar que todas tengan el mismo formato.
-  # - Unir las bases de datos en una mismas.
   # - Realizar analis y graficas de los datos.
 
 
