@@ -31,9 +31,7 @@ colnames(tabla) <- c("info","page")
 Listado <- rbind(Listado,tabla)
 }
 
-#Siguientes pasos;
- #-Separar los datos de la columna uno y dejar especificadas las columnas.
- #-Revisar la inforamcion de las imagenes.
+  #-Separar los datos de la columna uno y dejar especificadas las columnas.
 
 library(stringr)
 #Especificamos los valores por los que queremos separar
@@ -58,3 +56,43 @@ Listado_F <- data.frame(Profesor = test_1$X1,
 
 rm(list=ls(pattern="^test"))
 
+  #Imagenes
+  #-Revisar la inforamcion de las imagenes.
+
+url <- "http://w2.fisica.unam.mx/directory/info/search_researchers?page=1"
+url_html <- read_html(url) #Lemos la info html
+
+  for(i in 1:4) {
+  eval(parse(text = paste0('img_',i,' <- xml_attrs(xml_child(xml_child(xml_child(xml_child(xml_child(url_html, 2), 5), ',i,'), 1), 1))')))
+  eval(parse(text = paste0('img_',i,' <- data.frame(img_',i,')')))
+  }
+f <- data.frame(t(cbind(img_1,img_2,img_3,img_4)))
+
+for(i in 2:33){
+eval(parse(text = paste0('url <- "http://w2.fisica.unam.mx/directory/info/search_researchers?page=',i,'"')))
+url_html <- read_html(url) #Lemos la info html
+
+for(i in 1:4) {
+  eval(parse(text = paste0('img_',i,' <- xml_attrs(xml_child(xml_child(xml_child(xml_child(xml_child(url_html, 2), 5), ',i,'), 1), 1))')))
+  eval(parse(text = paste0('img_',i,' <- data.frame(img_',i,')')))
+}
+
+eval(parse(text = paste0('f_',i,' <- data.frame(t(cbind(img_1,img_2,img_3,img_4)))')))
+
+eval(parse(text = paste0('f <- rbind(f,f_',i,')')))
+  }
+    
+rm(list=ls(pattern="^img_"))
+
+url <- "http://w2.fisica.unam.mx/directory/info/search_researchers?page=34"
+url_html <- read_html(url) #Lemos la info html
+
+img_1 <- xml_attrs(xml_child(xml_child(xml_child(xml_child(xml_child(url_html, 2), 5), 1), 1), 1))
+img_1 <- data.frame((t(img_1)))
+
+f <- rbind(f, img_1)
+
+#Unimos
+Tabla_Final <- cbind(Listado_F,f)
+
+rm(f,f_4,img_1,Listado,Listado_F,tabla,tabla_0)
