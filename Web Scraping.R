@@ -28,7 +28,7 @@ Listado <- tabla_0 #Base con los datos
 
 #for para leer todos los datos
 
-for (i in (2:34)){
+for (i in (2:33)){
 eval(parse(text = paste0('url <- "http://w2.fisica.unam.mx/directory/info/search_researchers?page=',i,'"')))
 url_html <- read_html(url)
 
@@ -145,18 +145,18 @@ setwd(Fotos)
 Profesor <- paste0(Tabla_Final[,1]," ",Tabla_Final[,2]) #Fijos
 links <- Tabla_Final[,9] #Fijos
 
-for(i in 1:40){
+for(i in 1:39){
 eval(parse(text = paste0('Imagen_',i,' <- image_read(as.character(links[',i,']))'))) # Ciclo
 eval(parse(text = paste0('image_write(Imagen_',i,',paste0(as.character(Profesor[',i,']),".jpg"))'))) #Ciclo
 eval(parse(text = paste0('rm(Imagen_',i,')')))
 }
 
-#No se abre la conexion y no puedo descargar esta imagen :(
-#Imagen_41 <- image_read(as.character(links[41]),strip = 1) # Ciclo
-#image_write(Imagen_41,paste0(as.character(Profesor[41]),".jpg"))
-#print(Imagen_41)  
+#No se abre la conexion y no puedo descargar esta imagen :( (La opcion es descargar la imagen manualmente)
+#Imagen_40 <- image_read(as.character(links[40]),strip = 1) # Ciclo
+#image_write(Imagen_40,paste0(as.character(Profesor[40]),".jpg"))
+#print(Imagen_40)  
 
-for(i in 42:129){
+for(i in 41:129){
   eval(parse(text = paste0('Imagen_',i,' <- image_read(as.character(links[',i,']))'))) # Ciclo
   eval(parse(text = paste0('image_write(Imagen_',i,',paste0(as.character(Profesor[',i,']),".jpg"))'))) #Ciclo
   eval(parse(text = paste0('rm(Imagen_',i,')')))
