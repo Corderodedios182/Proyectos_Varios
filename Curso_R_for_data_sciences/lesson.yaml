@@ -1,0 +1,319 @@
+- Class: meta
+  Course: Curso
+  Lesson: Manipulacion de Datos dplyr
+  Author: your name goes here
+  Type: Standard
+  Organization: your organization's name goes here
+  Version: 2.4.3
+
+- Class: text
+  Output: Que es dply?
+
+- Class: text
+  Output: dplyr es un poderoso paquete R, para transformar y resumir datos tabulares con filas y columnas.
+
+- Class: text
+  Output: Por que es util?
+
+- Class: text
+  Output: El paquete contiene un conjunto de funciones que realizan operaciones comunes de manipulacion de datos como filtrar filas,seleccionar columnas,reordenar filas, agregar nuevas columnas, resumir datos.
+
+- Class: text
+  Output: Como se compara dplyr con el uso de funciones base R?
+
+- Class: text
+  Output: Si estas familiarizado con R, te sonaran el nombre de las funciones split(), subset(), apply(), lapply(), tapply(), aggregate(). dplyr en comparacion con estas funciones es mas facil de trabajar, tienen una sintaxis clara y se encuentra dirigida para el analisis de datos en lugar de trabajar con solo vectores.
+
+- Class: text
+  Output: Como obtengo dplyr?
+
+- Class: cmd_question
+  Output: En algunos casos ya viene instalada. Ejecuta en consola -> library(dplyr).
+  CorrectAnswer: library(dplyr)
+  AnswerTests: omnitest(correctExpr='library(dplyr)')
+  Hint: Ejecuta en Consola -> library(dplyr), tal vez sea necesario instalar dplyr Ejecuta en Consola -> install.packages("dplyr")
+
+- Class: text
+  Output: Conociendo nuestros datos...
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> head(starwars) Esta funcion te mostrara el encabezado de los datos.
+  CorrectAnswer: head(starwars)
+  AnswerTests: omnitest(correctExpr='head(starwars)')
+  Hint: Ejecuta en Conola -> head(starwars)
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> names(starwars) Nombres de las columnas
+  CorrectAnswer: names(starwars)
+  AnswerTests: omnitest(correctExpr='names(starwars)')
+  Hint: Ejecuta en Conola -> names(starwars)
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> dim(starwars) Dimension numero de filas y columnas
+  CorrectAnswer: dim(starwars)
+  AnswerTests: omnitest(correctExpr='dim(starwars)')
+  Hint: Ejecuta en Conola -> dim(starwars)
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> glimpse(starwars) Funcion dplyr para conocer la estructura de datos.
+  CorrectAnswer: glimpse(starwars)
+  AnswerTests: omnitest(correctExpr='glimpse(starwars)')
+  Hint: Ejecuta en Conola -> glimpse(starwars)
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> ?starwars Cuando tenemos duda de algo podemos preguntar en consola con el signo ?, se desglosara un resumen de la base starwars
+  CorrectAnswer: ?starwars
+  AnswerTests: omnitest(correctExpr='?starwars')
+  Hint: Ejecuta en Conola -> ?starwars
+
+- Class: text
+  Output: La API de Star Wars es el primer conjunto de datos de Star Wars cuantificado y formateado programaticamente. Para saber mas entra a -> https://swapi.co/about
+
+- Class: text
+  Output: Funciones basicas dplyr, select(), filter(), arrange(), mutate(), summarise(), group_by()
+
+- Class: text
+  Output: Comenzemos con select() selecciona columnas y filter() filtra filas por alguna condicion.
+
+- Class: text
+  Output: Creemos un nuevo dataframe con las caracteristicas Fisicas de los Personajes.
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> Caracteristicas_Fisicas <- select(starwars, name, height, mass, hair_color, skin_color, eye_color, gender, species)
+  CorrectAnswer: Caracteristicas_Fisicas <- select(starwars, name, height, mass, hair_color, skin_color, eye_color, gender, species)
+  AnswerTests: omnitest(correctExpr='Caracteristicas_Fisicas <- select(starwars, name, height, mass, hair_color, skin_color, eye_color, gender, species)')
+  Hint: Ejecuta en Consola -> Caracteristicas_Fisicas <- select(starwars, name, height, mass, hair_color, skin_color, eye_color, gender, species)
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> head(Caracteristicas_Fisicas)
+  CorrectAnswer: head(Caracteristicas_Fisicas)
+  AnswerTests: omnitest(correctExpr='head(Caracteristicas_Fisicas)')
+  Hint: head(Caracteristicas_Fisicas)
+
+- Class: text
+  Output: Tambien podemos especificar las variables que NO necesitamos con un - (menos)
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> Caracteristicas_Fisicas <- select(starwars, -birth_year,-homeworld, - films, - vehicles, -starships)
+  CorrectAnswer: Caracteristicas_Fisicas <- select(starwars, -birth_year,-homeworld, - films, - vehicles, -starships)
+  AnswerTests: omnitest(correctExpr='Caracteristicas_Fisicas <- select(starwars, -birth_year,-homeworld, - films, - vehicles, -starships)')
+  Hint: Ejecuta en Consola -> Caracteristicas_Fisicas <- select(starwars, -birth_year,-homeworld, - films, - vehicles, -starships)
+
+- Class: text
+  Output: Espeficando un Rango de Columnas
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> head(select(starwars, name:species))
+  CorrectAnswer: head(select(starwars, name:species))
+  AnswerTests: omnitest(correctExpr='head(select(starwars, name:species))')
+  Hint: Ejecuta en Consola -> head(select(starwars, name:species))
+
+- Class: text
+  Output: Especificando colomunas que comienzen con algun caracater en especifico, usando como complementeo la funcion starts_with()
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> head(select(starwars, starts_with("skin")))
+  CorrectAnswer: head(select(starwars, starts_with("skin")))
+  AnswerTests: omnitest(correctExpr='head(select(starwars, starts_with("skin")))')
+  Hint: Ejecuta en Consola -> head(select(starwars, starts_with("skin")))
+
+- Class: text
+  Output: Existen otras funciones complemento de select(), como ends_with(), contains(), matches(), one_of()
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> head(select(starwars, contains("color")))
+  CorrectAnswer: head(select(starwars, contains("color")))
+  AnswerTests: omnitest(correctExpr='head(select(starwars, contains("color")))')
+  Hint: Ejecuta en Consola -> head(select(starwars, contains("color")))
+
+- Class: text
+  Output: Pasemos al Filtrado de datos con filter()
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> head(Caracteristicas_Fisicas)
+  CorrectAnswer: head(Caracteristicas_Fisicas)
+  AnswerTests: omnitest(correctExpr='head(Caracteristicas_Fisicas)')
+  Hint: Ejecuta en Consola -> head(Caracteristicas_Fisicas)
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> head(filter(Caracteristicas_Fisicas, species == "Human"))
+  CorrectAnswer: head(filter(Caracteristicas_Fisicas, species == "Human"))
+  AnswerTests: omnitest(correctExpr='head(filter(Caracteristicas_Fisicas, species == "Human"))')
+  Hint: Ejecuta en Consola -> head(filter(Caracteristicas_Fisicas, species == "Human"))
+
+- Class: text
+  Output: Multiples condiciones...
+
+- Class: text
+  Output: Sobre varias columnas
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> filter(Caracteristicas_Fisicas, species == "Human", gender == "female", height > 150)
+  CorrectAnswer: filter(Caracteristicas_Fisicas, species == "Human", gender == "female", height > 150)
+  AnswerTests: omnitest(correctExpr='filter(Caracteristicas_Fisicas, species == "Human", gender == "female", height > 150)')
+  Hint: Ejecuta en Consola -> filter(Caracteristicas_Fisicas, species == '"Human", gender == "female", height > 150)
+
+- Class: text
+  Output: Multiples valores de una fila, con %in%.
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> filter(Caracteristicas_Fisicas, species %in% c("Human","Droid"))
+  CorrectAnswer: filter(Caracteristicas_Fisicas, species %in% c("Human","Droid"))
+  AnswerTests: omnitest(correctExpr='filter(Caracteristicas_Fisicas, species %in% c("Human","Droid"))')
+  Hint: Ejecuta en Consola -> filter(Caracteristicas_Fisicas, species %in% c("Human","Droid"))
+
+- Class: text
+  Output: Puedes ocupar los operadores booleanos (>, <, >=, <=, !=, ==, %in%) para crear las pruebas logicas
+
+- Class: text
+  Output: Antes de continuar, presentemos el operador %>% . Este operador nos permite canalizar la salida de una funcion a la entrada de otra. En lugar de funciones de anidamiente (lecturas desde adentro hacia afuera),la idea de la tuberia es leer las funciones de izquierda a derecha.
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> head(select(Caracteristicas_Fisicas, name, species))
+  CorrectAnswer: head(select(Caracteristicas_Fisicas, name, species))
+  AnswerTests: omnitest(correctExpr='head(select(Caracteristicas_Fisicas, name, species))')
+  Hint: Ejecuta en Consola -> head(select(Caracteristicas_Fisicas, name, species))
+
+- Class: text
+  Output: Veamos la gran utilidad del operador %>% (tuberia)
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> starwars %>% select(name, species) %>% head()
+  CorrectAnswer: starwars %>% select(name, species) %>% head()
+  AnswerTests: omnitest(correctExpr='starwars %>% select(name, species) %>% head()')
+  Hint: Ejecuta en Consola -> starwars %>% select(name, species) %>% head()
+
+- Class: text
+  Output: Las funciones se ejecutaran de izquierda a derecha...
+
+- Class: text
+  Output: Pronto te daras cuenta de la utilidad de %>% cuando comenzemos a encadenar muchas funciones.
+
+- Class: text
+  Output: De regreso a funciones dplyr...
+
+- Class: text
+  Output: Funcion arrange(). Para organizar o reordenar filas por una columna en particular.
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> Caracteristicas_Fisicas %>% arrange(height) %>% head()
+  CorrectAnswer: Caracteristicas_Fisicas %>% arrange(height) %>% head()
+  AnswerTests: omnitest(correctExpr='Caracteristicas_Fisicas %>% arrange(height) %>% head()')
+  Hint: Ejecuta en Consola -> Caracteristicas_Fisicas %>% arrange(height) %>% head()
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> Caracteristicas_Fisicas %>% arrange(desc(height)) %>% head()
+  CorrectAnswer: Caracteristicas_Fisicas %>% arrange(desc(height)) %>% head()
+  AnswerTests: omnitest(correctExpr='Caracteristicas_Fisicas %>% arrange(desc(height)) %>% head()')
+  Hint: Ejecuta en Consola -> Caracteristicas_Fisicas %>% arrange(desc(height)) %>% head()
+
+- Class: text
+  Output: Combinemos las 3 funciones select(), filter(), arrange().
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> starwars %>%  select(name, height, mass, hair_color, skin_color, eye_color, gender, species) %>%  filter(species == "Human") %>%  arrange(desc(height)) %>% head()
+  CorrectAnswer: starwars %>% select(name, height, mass, hair_color, skin_color, eye_color, gender, species) %>% filter(species == "Human") %>% arrange(desc(height)) %>% head()
+  AnswerTests: omnitest(correctExpr='starwars %>% select(name, height, mass, hair_color, skin_color, eye_color, gender, species) %>%  filter(species == "Human") %>%  arrange(desc(height)) %>%  head()')
+  Hint: Ejecuta en Consola -> starwars %>% select(name, height, mass, hair_color, skin_color, eye_color, gender, species) %>%  filter(species == "Human") %>%  arrange(desc(height)) %>%  head()
+
+- Class: text
+  Output: Un ejemplo mas...
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> starwars %>%  select(name, height, mass, hair_color, skin_color, eye_color, gender, species) %>%  filter(species %in% c("Human","Droid")) %>%  arrange(desc(height)) %>%  head()
+  CorrectAnswer: starwars %>%  select(name, height, mass, hair_color, skin_color, eye_color, gender, species) %>%  filter(species %in% c("Human","Droid")) %>%  arrange(desc(height)) %>%  head()
+  AnswerTests: omnitest(correctExpr='starwars %>%  select(name, height, mass, hair_color, skin_color, eye_color, gender, species) %>%  filter(species %in% c("Human","Droid")) %>%  arrange(desc(height)) %>%  head()')
+  Hint: Ejecuta en Consola -> starwars %>%  select(name, height, mass, hair_color, skin_color, eye_color, gender, species) %>%  filter(species %in% c("Human","Droid")) %>%  arrange(desc(height)) %>%  head()
+
+- Class: text
+  Output: Gracias al operador %>% es mas facil escribir y leer nuestros pasos como analistas de datos.
+
+- Class: text
+  Output: Funcion mutate() agrega nuevas columnas al marco de datos.
+
+- Class: text
+  Output: Creemos el Indice de Masa Corporal de nuestro Personajes (IMC = mass/height)
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> Caracteristicas_Fisicas %>%   mutate(IMC = mass/height) %>%  head()
+  CorrectAnswer: Caracteristicas_Fisicas %>%   mutate(IMC = mass/height) %>%  head()
+  AnswerTests: omnitest(correctExpr='Caracteristicas_Fisicas %>% mutate(IMC = mass/height) %>%  head()')
+  Hint: Ejecuta en Consola -> Caracteristicas_Fisicas %>% mutate(IMC = mass/height) %>% head()
+
+- Class: text
+  Output: Creacion de multiples nuevas columnas.
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> Caracteristicas_Fisicas %>% mutate(IMC = mass/height, Specie_gender = paste0(species,"-",gender)) %>% head()
+  CorrectAnswer: Caracteristicas_Fisicas %>% mutate(IMC = mass/height, Specie_gender = paste0(species,"-",gender)) %>% head()
+  AnswerTests: omnitest(correctExpr='Caracteristicas_Fisicas %>% mutate(IMC = mass/height, Specie_gender = paste0(species,"-",gender)) %>% head()')
+  Hint: Ejecuta en Consola -> Caracteristicas_Fisicas %>% mutate(IMC = mass/height, Specie_gender = paste0(species,"-",gender)) %>% head()
+
+- Class: text
+  Output: Combinemos 4 funciones, select(), filter(), arrange(), mutate().
+
+- Class: cmd_question
+  Output: Ejecuta en Consola ->  starwars %>% select(name, height, mass, hair_color, skin_color, eye_color, gender, species) %>% filter(species %in% c("Human","Droid")) %>% arrange(desc(height)) %>% mutate(IMC = mass/height, Specie_gender = paste0(species,"-",gender)) %>% head()
+  CorrectAnswer: starwars %>%  select(name, height, mass, hair_color, skin_color, eye_color, gender, species) %>%  filter(species %in% c("Human","Droid")) %>%  arrange(desc(height)) %>%  mutate(IMC = mass/height, Specie_gender = paste0(species,"-",gender)) %>%  head()
+  AnswerTests: omnitest(correctExpr='starwars %>%  select(name, height, mass, hair_color, skin_color, eye_color, gender, species) %>%  filter(species %in% c("Human","Droid")) %>%  arrange(desc(height)) %>%  mutate(IMC = mass/height, Specie_gender = paste0(species,"-",gender)) %>%  head()')
+  Hint: Ejecuta en Consola -> starwars %>% select(name, height, mass, hair_color, skin_color, eye_color, gender, species) %>% filter(species %in% c("Human","Droid")) %>% arrange(desc(height)) %>% mutate(IMC = mass/height, Specie_gender = paste0(species,"-",gender)) %>% head()
+
+- Class: text
+  Output: Creando Resumenes de datos, group_by() y summarise()
+
+- Class: text
+  Output: Funcion summarise() creara estadisticas de resumen para una columna determinada. 
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> Caracteristicas_Fisicas %>% summarise(avg_height = mean(height,na.rm = TRUE))
+  CorrectAnswer: Caracteristicas_Fisicas %>% summarise(avg_height = mean(height,na.rm = TRUE))
+  AnswerTests: omnitest(correctExpr='Caracteristicas_Fisicas %>% summarise(avg_height = mean(height,na.rm = TRUE))')
+  Hint: Ejecuta en Consola -> Caracteristicas_Fisicas %>% summarise(avg_height = mean(height,na.rm = TRUE))
+
+- Class: text
+  Output: Hay muchas otras estadisticas de resumen que podemos considerar
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> Caracteristicas_Fisicas %>% summarise(avg_height = mean(height,na.rm = TRUE),min_height = min(height,na.rm = TRUE),max_height = max(height,na.rm = TRUE),total = n())
+  CorrectAnswer: Caracteristicas_Fisicas %>% summarise(avg_height = mean(height,na.rm = TRUE),min_height = min(height,na.rm = TRUE),max_height = max(height,na.rm = TRUE),total = n())
+  AnswerTests: omnitest(correctExpr='Caracteristicas_Fisicas %>% summarise(avg_height = mean(height,na.rm = TRUE),min_height = min(height,na.rm = TRUE),max_height = max(height,na.rm = TRUE),total = n())')
+  Hint: Ejecuta en Consola -> Caracteristicas_Fisicas %>% summarise(avg_height = mean(height,na.rm = TRUE),min_height = min(height,na.rm = TRUE),max_height = max(height,na.rm = TRUE),total = n())
+
+- Class: text
+  Output: Funcion group_by(), es muy importante en dplyr, permite generar agrupaciones.
+  
+- Class: text
+  Output: Hagamos un conteo sobre el numero de Species de Starwars, solo es necesario especificar la variables que deseamos agrupar en la funcion group_by()
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> starwars %>% group_by(species) %>% summarise(Conteo = n()) %>% arrange(desc(Conteo))
+  CorrectAnswer: starwars %>% group_by(species) %>% summarise(Conteo = n()) %>% arrange(desc(Conteo))
+  AnswerTests: omnitest(correctExpr='starwars %>% group_by(species) %>% summarise(Conteo = n()) %>% arrange(desc(Conteo))')
+  Hint: Ejecuta en Consola -> starwars %>% group_by(species) %>% summarise(Conteo = n()) %>% arrange(desc(Conteo))
+
+- Class: text
+  Output: Habras notado el uso de la funcion summarise(), nos permite especificar la funcion que necesitamos realizar al momento de agrupar.
+
+- Class: text
+  Output: Podemos crear resumenes especificando multiples campos...
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> starwars %>% group_by(gender,species,eye_color) %>% summarise(Media_height = mean(height), Media_mass = mean(mass)) %>% arrange(desc(Media_height))
+  CorrectAnswer: starwars %>% group_by(gender,species,eye_color) %>% summarise(Media_height = mean(height), Media_mass = mean(mass)) %>% arrange(desc(Media_height))
+  AnswerTests: omnitest(correctExpr='starwars %>% group_by(gender,species,eye_color) %>% summarise(Media_height = mean(height), Media_mass = mean(mass)) %>% arrange(desc(Media_height))')
+  Hint: Ejecuta en Cosulta -> starwars %>% group_by(gender,species,eye_color) %>% summarise(Media_height = mean(height), Media_mass = mean(mass)) %>% arrange(desc(Media_height))
+
+- Class: text
+  Output: De forma de Resumen veamos la combinacion de todas las funciones vistas en esta leccion
+
+- Class: text
+  Output: Seleccionando, filtrando, agregando nuevas columnas y agrupando todo en una misma sentencia...
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> starwars %>% select(name, height, mass, hair_color, skin_color, eye_color, gender, species) %>% filter(species %in% c("Human","Droid")) %>% mutate(IMC = mass/height) %>% group_by(species) %>% summarise(Promedio_height = mean(height,na.rm = TRUE))
+  CorrectAnswer: starwars %>% select(name, height, mass, hair_color, skin_color, eye_color, gender, species) %>% filter(species %in% c("Human","Droid")) %>% mutate(IMC = mass/height) %>% group_by(species) %>% summarise(Promedio_height = mean(height,na.rm = TRUE))
+  AnswerTests: omnitest(correctExpr='starwars %>% select(name, height, mass, hair_color, skin_color, eye_color, gender, species) %>% filter(species %in% c("Human","Droid")) %>% mutate(IMC = mass/height) %>% group_by(species) %>% summarise(Promedio_height = mean(height,na.rm = TRUE))')
+  Hint: Ejecuta en Consola -> starwars %>% select(name, height, mass, hair_color, skin_color, eye_color, gender, species) %>% filter(species %in% c("Human","Droid")) %>% mutate(IMC = mass/height) %>% group_by(species) %>% summarise(Promedio_height = mean(height,na.rm = TRUE))
+
+- Class: text
+  Output: Esto fue una introduccion al paquete dplyr, en el siguiente enlace podras ver mas funciones utiles. https://www.rstudio.com/wp-content/uploads/2015/03/data-wrangling-spanish.pdf
