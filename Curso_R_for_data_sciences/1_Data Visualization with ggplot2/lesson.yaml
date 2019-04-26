@@ -1,0 +1,365 @@
+- Class: meta
+  Course: Curso
+  Lesson: Visualizacion de Datos ggplot
+  Author: your name goes here
+  Type: Standard
+  Organization: your organization's name goes here
+  Version: 2.4.3
+
+- Class: text
+  Output: Ser capaz de crear visualizaciones de datos es un paso clave para poder comunicar informacion y hallazgos a otros.
+
+- Class: text
+  Output: En este modulo aprenderas a usar la libreria ggplot2 para hacer representativamente hermosos graficos.
+
+- Class: text
+  Output: Aunque R proporciona funciones de trazado integradas, ggplot2 implementa una sintaxis clara y facil de escribir.
+
+- Class: text
+  Output: Convirtiendose en la biblioteca de trazado dominante en R.
+
+- Class: text
+  Output: Para reproducir el codigo a lo largo de este tutorial cargaremos ggplot2
+  
+- Class: cmd_question
+  Output: Ejecuta en Consola -> library(ggplot2)
+  CorrectAnswer: library(ggplot2)
+  AnswerTests: omnitest(correctExpr='library(ggplot2)')
+  Hint: Ejecuta en Consola -> library(ggplot2)
+
+- Class: text
+  Output: Trabajaremos con los datos precargados de starwars
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> head(starwars)
+  CorrectAnswer: head(starwars)
+  AnswerTests: omnitest(correctExpr='head(starwars)')
+  Hint: Ejecuta en Consola -> head(starwars)
+
+- Class: text
+  Output: Asi como la gramatica del lenguaje nos ayuda a construir oraciones significativas con palabras, la gramatica de graficos nos ayuda a construir figuras graficas a partir de diferentes elementos visuales.
+
+- Class: text
+  Output: Esta gramatica nos da una forma de hablar sobre las partes de una trama datos a trazar, objetos geometricos (circulos,lineas,etc.), transformaciones estadisticas, escalas, sistemas de coordenadas. Estructura desarrollada originalmente por Leland Wilkinson, la gramatica de los graficos fue adaptada por Hadley Wickham para describir las componentes de una trama de datos.
+
+- Class: text
+  Output: Hadley Wickham organiza aun mas estos componentes en capas, donde cada capa tiene un solo objeto geometrico, transformacion estadistica y ajuste de posicion.
+
+- Class: text
+  Output: Siguiendo esta gramatica, puedes pensar en cada grafico como un conjunto de capas de imagenes, donde la apariencia de cada imagen se basa en algun aspecto del conjunto.
+
+- Class: text
+  Output: En conjunto, esta gramatica nos permite discutir como se ven las graficas usando un conjunto estandar de vocabulario. Y similar que en la libraria dplyr proporciona una transformacion y manipulacion de datos eficiente.
+
+- Class: text
+  Output: Ya con un poco de contexto, comenzemos con lo basico...
+
+- Class: text
+  Output: Primero creemos un lienzo en blanco con la funcion ggplot()
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> ggplot(starwars)
+
+  CorrectAnswer: ggplot(starwars)
+  AnswerTests: omnitest(correctExpr='ggplot(starwars)')
+  Hint: Ejecuta en Consola -> ggplot(starwars)
+
+- Class: text
+  Output: Segundo especifiquemos las asignaciones esteticas (ejes x & y)
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> ggplot(starwars, aes(x = height, y = mass))
+  CorrectAnswer: ggplot(starwars, aes(x = height, y = mass))
+  AnswerTests: omnitest(correctExpr='ggplot(starwars, aes(x = height, y = mass))')
+  Hint: Ejecuta en Consola -> ggplot(starwars, aes(x = height, y = mass))
+
+- Class: text
+  Output: Tercero agreguemos una nueva capa que son los objetos geometricos que se mostraran en la trama. En esta caso, agreguemos geom_point() una capa con elementos de puntos como la formas geometricas para representar los datos.
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> ggplot(starwars, aes(x = height, y = mass)) + geom_point()
+  CorrectAnswer: ggplot(starwars, aes(x = height, y = mass)) + geom_point()
+  AnswerTests: omnitest(correctExpr='ggplot(starwars, aes(x = height, y = mass)) + geom_point()')
+  Hint: Ejecuta en Consola -> ggplot(starwars, aes(x = height, y = mass)) + geom_point()
+
+- Class: text
+  Output: Observe que al agregar funcion geom_point(), utilizo el '+' operador de suma. A medida que agregue nuevas capas, siempre usara '+' para agregar visualizacion.
+
+- Class: text
+  Output: Ahora veamos Asignacion de estetica toman las propiedades de los datos que se utilizan para influir en las caracteristicas visuales, como la posicion, el color, tamaño, forma o transparencia
+  
+- Class: text
+  Output: Toda la estetica de un grafico se especifica en las funcion aes() (mas adelante vera que cada funcion geom_ capa puede tener su propia estetica)
+
+- Class: text
+  Output: Por ejemplos, coloremos los generos que tenemos en starwars
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> ggplot(starwars, aes(x = height, y = mass, color = gender)) + geom_point()
+  CorrectAnswer: ggplot(starwars, aes(x = height, y = mass, color = gender)) + geom_point()
+  AnswerTests: omnitest(correctExpr='ggplot(starwars, aes(x = height, y = mass, color = gender)) + geom_point()')
+  Hint: Ejecuta en Consola -> ggplot(starwars, aes(x = height, y = mass, color = gender)) + geom_point()
+
+- Class: text
+  Output: Ten en cuenta que el uso de aes(), tambien se puede aplicar en geom_. Esto arrojaria un resultado muy diferente.
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> ggplot(starwars, aes(x = height, y = mass)) + geom_point(color = "green")
+  CorrectAnswer: ggplot(starwars, aes(x = height, y = mass)) + geom_point(color = "green")
+  AnswerTests: omnitest(correctExpr='ggplot(starwars, aes(x = height, y = mass)) + geom_point(color = "green")')
+  Hint: Ejecuta en Consola -> ggplot(starwars, aes(x = height, y = mass)) + geom_point(color = "green")
+
+- Class: text
+  Output: FORMAS GEOMETRICAS, podemos construir casi cualquier tipo de parcela que desemos. 
+
+- Class: text
+  Output: Para distinguir los diferentes tipo de parcelas, se tienen diferentes tipos de funciones geom_
+
+- Class: text
+  Output: geom_point() Punto individuales como diagramas de dispercion, geom_line() Graficos de lineas, geom_smooth() Dibuja lineas suavizadas es util para describir tendencias, geom_bar() Graficas de Barras, geom_histogram() Dibujar valores agrupados, geom_polygon() formas geometricas, geom_map() Poligonos en forma de mapa.
+
+- Class: text
+  Output: Cada una de estas geometrias aprovechara las asignaciones esteticas proporcionadas.
+
+- Class: text
+  Output: Veamos algunos ejemplos;
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> ggplot(starwars, aes(x = height, y = mass)) + geom_point()
+  CorrectAnswer: ggplot(starwars, aes(x = height, y = mass)) + geom_point()
+  AnswerTests: omnitest(correctExpr='ggplot(starwars, aes(x = height, y = mass)) + geom_point()')
+  Hint: Ejecuta en Consola -> ggplot(starwars, aes(x = height, y = mass)) + geom_point()
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> ggplot(starwars, aes(x = height, y = mass)) + geom_smooth()
+  CorrectAnswer: ggplot(starwars, aes(x = height, y = mass)) + geom_smooth()
+  AnswerTests: omnitest(correctExpr='ggplot(starwars, aes(x = height, y = mass)) + geom_smooth()')
+  Hint: Ejecuta en Consola -> ggplot(starwars, aes(x = height, y = mass)) + geom_smooth()
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> ggplot(starwars, aes(x = gender)) + geom_bar()
+  CorrectAnswer: ggplot(starwars, aes(x = gender)) + geom_bar()
+  AnswerTests: omnitest(correctExpr='ggplot(starwars, aes(x = gender)) + geom_bar()')
+  Hint: Ejecuta en Consola -> ggplot(starwars, aes(x = gender)) + geom_bar()
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> ggplot(starwars, aes(x = height)) + geom_histogram()
+  CorrectAnswer: ggplot(starwars, aes(x = height)) + geom_histogram()
+  AnswerTests: omnitest(correctExpr='ggplot(starwars, aes(x = height)) + geom_histogram()')
+  Hint: Ejecuta en Consola -> ggplot(starwars, aes(x = height)) + geom_histogram()
+
+- Class: text
+  Output: Ahora combinemos multiples geometrias a un trazado, lo que permite crear graficos complejos que muestren multiples aspecto de los datos.
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> ggplot(starwars, aes(x = height, y = mass)) + geom_point() + geom_smooth()
+  CorrectAnswer: ggplot(starwars, aes(x = height, y = mass)) + geom_point() + geom_smooth()
+  AnswerTests: omnitest(correctExpr='ggplot(starwars, aes(x = height, y = mass)) + geom_point() + geom_smooth()')
+  Hint: Ejecuta en Consola -> ggplot(starwars, aes(x = height, y = mass)) + geom_point() + geom_smooth()
+
+- Class: text
+  Output: Por supuesto, la estetica de cada geom_ puede ser diferente, por lo que puede mostrar varias lineas en la misma trama (diferentes estilos, colores, etc)
+
+- Class: text
+  Output: Tambien es posible dar a cada geom_ un argumento de datos diferente, para mostrar multiples conjuntos de datos en la misma grafica.
+
+- Class: text
+  Output: Por ejemplo, cambiemos los colores de cada geom_
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> ggplot(starwars, aes(x = height, y = mass)) + geom_point(color = "green") + geom_smooth(color = "red")
+  CorrectAnswer: ggplot(starwars, aes(x = height, y = mass)) + geom_point(color = "green") + geom_smooth(color = "red")
+  AnswerTests: omnitest(correctExpr='ggplot(starwars, aes(x = height, y = mass)) + geom_point(color = "green") + geom_smooth(color = "red")')
+  Hint: Ejecuta en Consola -> ggplot(starwars, aes(x = height, y = mass)) + geom_point(color = "green") + geom_smooth(color = "red")
+
+- Class: text
+  Output: Si especificamos una estetica dentro, ggplot pasara a cada una de las geom_. O podemos especificar ciertas aes() dentro de cada geom, lo que permite mostrar solo ciertas caracteristicas para cada capa especifica.
+
+- Class: text
+  Output: Coloremos por genero y veamos una linea suave por cada grupo.
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> ggplot(starwars, aes(x = height, y = mass, color = gender)) + geom_point() + geom_smooth(se = FALSE)
+  CorrectAnswer: ggplot(starwars, aes(x = height, y = mass, color = gender)) + geom_point() + geom_smooth(se = FALSE)
+  AnswerTests: omnitest(correctExpr='ggplot(starwars, aes(x = height, y = mass, color = gender)) + geom_point() + geom_smooth(se = FALSE)')
+  Hint: Ejecuta en Consola -> ggplot(starwars, aes(x = height, y = mass, color = gender)) + geom_point() + geom_smooth(se = FALSE)
+
+- Class: text
+  Output: Ahora solo pintemos los puntos por genero y la linea de tendencia de un solo color
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> ggplot(starwars, aes(x = height, y = mass)) + geom_point(aes(color = gender)) + geom_smooth(se = FALSE)
+  CorrectAnswer: ggplot(starwars, aes(x = height, y = mass)) + geom_point(aes(color = gender)) + geom_smooth(se = FALSE)
+  AnswerTests: omnitest(correctExpr='ggplot(starwars, aes(x = height, y = mass)) + geom_point(aes(color = gender)) + geom_smooth(se = FALSE)')
+  Hint: Ejecuta en Consola -> ggplot(starwars, aes(x = height, y = mass)) + geom_point(aes(color = gender)) + geom_smooth(se = FALSE)
+
+- Class: text
+  Output: TRANSFORMACIONES ESTADISTICAS, al tener un grafico de barrar, notara que el eje 'y' se define como el recuento de los elementos.Este conteo no es parte del conjunto de datos, sino que es una transformacion estadistica que geom_bar() aplicara automaticamente. En particular se aplica stat_count().
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> ggplot(starwars, aes(x = gender)) + geom_bar()
+  CorrectAnswer: ggplot(starwars, aes(x = gender)) + geom_bar()
+  AnswerTests: omnitest(correctExpr='ggplot(starwars, aes(x = gender)) + geom_bar()')
+  Hint: Ejecuta en Consola -> ggplot(starwars, aes(x = gender)) + geom_bar()
+
+- Class: text
+  Output: ggplot soporta muchas transformaciones estadisticas diferentes. Por ejemplo la transformacion 'identity' dejara los datos como estan. Puede especificar la transformacion estadistica en el argument stat = 'identity' dentro de gome_bar().
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> conteo_de_clase <- dplyr::count(starwars, gender)
+  CorrectAnswer: conteo_de_clase <- dplyr::count(starwars, gender)
+  AnswerTests: omnitest(correctExpr='conteo_de_clase <- dplyr::count(starwars, gender)')
+  Hint: Ejecuta en Consola -> conteo_de_clase <- dplyr::count(starwars, gender)
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> conteo_de_clase
+  CorrectAnswer: conteo_de_clase
+  AnswerTests: omnitest(correctExpr='conteo_de_clase')
+  Hint: Ejecuta en Consola -> conteo_de_clase
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> ggplot(conteo_de_clase, aes(x = gender, y = n)) + geom_bar(stat = "identity")
+  CorrectAnswer: ggplot(conteo_de_clase, aes(x = gender, y = n)) + geom_bar(stat = "identity")
+  AnswerTests: omnitest(correctExpr='ggplot(conteo_de_clase, aes(x = gender, y = n)) + geom_bar(stat = "identity")')
+  Hint: Ejecuta en Consola -> ggplot(conteo_de_clase, aes(x = gender, y = n)) + geom_bar(stat = "identity")
+
+- Class: text
+  Output: Tambien podemos llamar stat_ funciones directamente para agregar capas adicionales. 
+
+- Class: text
+  Output: Veamos como se comporta el promedio del eje y, conforme vamos tomando puntos
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> ggplot(starwars, aes(x = height, y = mass)) + geom_point(color = "pink") + stat_summary(fun.y = "mean", geom = "line", size = 1, linetype = "dashed")
+  CorrectAnswer: ggplot(starwars, aes(x = height, y = mass)) + geom_point(color = "pink") + stat_summary(fun.y = "mean", geom = "line", size = 1, linetype = "dashed")
+  AnswerTests: omnitest(correctExpr='ggplot(starwars, aes(x = height, y = mass)) + geom_point(color = "pink") + stat_summary(fun.y = "mean", geom = "line", size = 1, linetype = "dashed")')
+  Hint: Ejecuta en Consola -> ggplot(starwars, aes(x = height, y = mass)) + geom_point(color = "pink") + stat_summary(fun.y = "mean", geom = "line", size = 1, linetype = "dashed")
+
+- Class: text
+  Output: AJUSTES DE POSICION. Ademas de una transformacion estadistica preterminada, cada geom_ tienen un ajuste de posicion que especifica que 'reglas' deben posicionarse los diferentes componentes entre si.
+
+- Class: text
+  Output: Esta posicion es notable en un geom_bar() si asignamos una variable diferente a la caracteristica visual de color.
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> ggplot(starwars, aes(x = gender, fill = species)) + geom_bar()
+  CorrectAnswer: ggplot(starwars, aes(x = gender, fill = species)) + geom_bar()
+  AnswerTests: omnitest(correctExpr='ggplot(starwars, aes(x = gender, fill = species)) + geom_bar()')
+  Hint: Ejecuta en Consola -> ggplot(starwars, aes(x = gender, fill = species)) + geom_bar()
+
+- Class: text
+  Output: Ahora podemos entender los distintos grupos de Species por genero.
+
+- Class: text
+  Output: En este caso geom_bar() utiliza un ajuste de posicion 'stack', haciendo que la altura de cada rectangulo sea propicia a su valor y se apilen los grupos uno encima de otro. 
+
+- Class: text
+  Output: Podemos usar el argumento position = dentro de geom_bar() para especificar reglas de ajuste.
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> ggplot(starwars, aes(x = gender, fill = species)) + geom_bar(position = "dodge")
+  CorrectAnswer: ggplot(starwars, aes(x = gender, fill = species)) + geom_bar(position = "dodge")
+  AnswerTests: omnitest(correctExpr='ggplot(starwars, aes(x = gender, fill = species)) + geom_bar(position = "dodge")')
+  Hint: Ejecuta en Consola -> ggplot(starwars, aes(x = gender, fill = species)) + geom_bar(position = "dodge")
+
+- Class: text
+  Output: Puedes ver que desagrupamos los grupos de especies en cada genero.
+
+- Class: text
+  Output: Ahora veamos el porcentaje de cada epecie dentro de los generos
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> ggplot(starwars, aes(x = gender, fill = species)) + geom_bar(position = "fill")
+  CorrectAnswer: ggplot(starwars, aes(x = gender, fill = species)) + geom_bar(position = "fill")
+  AnswerTests: omnitest(correctExpr='ggplot(starwars, aes(x = gender, fill = species)) + geom_bar(position = "fill")')
+  Hint: Ejecuta en Consola -> ggplot(starwars, aes(x = gender, fill = species)) + geom_bar(position = "fill")
+
+- Class: text
+  Output: Consulte la documentacion de cada geom_ en particular para obtener mas informacion sobre los ajustes de posicionamiento.
+
+- Class: text
+  Output: ESCALAS EN LOS EJES. Siempre que especificamos un mapeo estetico, ggplot usa una escala particular.
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> ggplot(starwars, aes(x = height, y = mass, color = gender)) + geom_point()
+  CorrectAnswer: ggplot(starwars, aes(x = height, y = mass, color = gender)) + geom_point()
+  AnswerTests: omnitest(correctExpr='ggplot(starwars, aes(x = height, y = mass, color = gender)) + geom_point()')
+  Hint: Ejecuta en Consola -> ggplot(starwars, aes(x = height, y = mass, color = gender)) + geom_point()
+
+- Class: text
+  Output: Agreguemos una escala para invertir los ejes.
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> ggplot(starwars, aes(x = height, y = mass, color = gender)) + geom_point() + scale_x_reverse() + scale_y_reverse() + scale_color_discrete()
+  CorrectAnswer: ggplot(starwars, aes(x = height, y = mass, color = gender)) + geom_point() + scale_x_reverse() + scale_y_reverse() + scale_color_discrete()
+  AnswerTests: omnitest(correctExpr='ggplot(starwars, aes(x = height, y = mass, color = gender)) + geom_point() + scale_x_reverse() + scale_y_reverse() + scale_color_discrete()')
+  Hint: Ejecuta en Consola -> ggplot(starwars, aes(x = height, y = mass, color = gender)) + geom_point() + scale_x_reverse() + scale_y_reverse() + scale_color_discrete()
+
+- Class: text
+  Output: Especifiquemos formato de porcentaje al eje y
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> ggplot(starwars, aes(x = gender, fill = species)) + geom_bar(position = "fill") + scale_y_continuous(breaks = seq(0,1, by = .2), labels = scales::percent)
+  CorrectAnswer: ggplot(starwars, aes(x = gender, fill = species)) + geom_bar(position = "fill") + scale_y_continuous(breaks = seq(0,1, by = .2), labels = scales::percent)
+  AnswerTests: omnitest(correctExpr='ggplot(starwars, aes(x = gender, fill = species)) + geom_bar(position = "fill") + scale_y_continuous(breaks = seq(0,1, by = .2), labels = scales::percent)')
+  Hint: Ejecuta en Consola -> ggplot(starwars, aes(x = gender, fill = species)) + geom_bar(position = "fill") + scale_y_continuous(breaks = seq(0,1, by = .2), labels = scales::percent)
+
+- Class: text
+  Output: SISTEMA DE COORDENADAS. Al igual que con las escalas, los sitemas de coordenadas se especifican  con funciones que comienzan con coord_. Hay una seride de diferentes sistemas de coordenadas posibles para usar.
+
+- Class: text
+  Output: coord_cartesian() sistema de coordenadas cartesiano, coord_flip() sistema cartesiano cn las x y la y volteadas, coord_fixed() sistema coordenadas con una relacion de aspecto fija, coord_polar() sistema de coordenadas polares, coord_quickmap() aspecto similar al de un mapa
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> ggplot(starwars, aes(x = gender, fill = species)) + geom_bar(position = "fill") + scale_y_continuous(breaks = seq(0,1, by = .2), labels = scales::percent) + coord_flip()
+  CorrectAnswer: ggplot(starwars, aes(x = gender, fill = species)) + geom_bar(position = "fill") + scale_y_continuous(breaks = seq(0,1, by = .2), labels = scales::percent) + coord_flip()
+  AnswerTests: omnitest(correctExpr='ggplot(starwars, aes(x = gender, fill = species)) + geom_bar(position = "fill") + scale_y_continuous(breaks = seq(0,1, by = .2), labels = scales::percent) + coord_flip()')
+  Hint: Ejecuta en Consola -> ggplot(starwars, aes(x = gender, fill = species)) + geom_bar(position = "fill") + scale_y_continuous(breaks = seq(0,1, by = .2), labels = scales::percent) + coord_flip()
+
+- Class: text
+  Output: FACETAS. Son formas de agrupar una grafica en varias partes diferentes (subparcelas). Esto le permite ver un grafico separado para cada valo en una variable categorica. Puede cosntruir multiples facetas usando facet_wrap()
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> ggplot(starwars, aes(x = height, y = mass)) + geom_point(aes(color = gender)) + geom_smooth(se = FALSE) + facet_wrap(~ gender)
+  CorrectAnswer: ggplot(starwars, aes(x = height, y = mass)) + geom_point(aes(color = gender)) + geom_smooth(se = FALSE) + facet_wrap(~ gender)
+  AnswerTests: omnitest(correctExpr='ggplot(starwars, aes(x = height, y = mass)) + geom_point(aes(color = gender)) + geom_smooth(se = FALSE) + facet_wrap(~ gender)')
+  Hint: Ejecuta en Consola -> ggplot(starwars, aes(x = height, y = mass)) + geom_point(aes(color = gender)) + geom_smooth(se = FALSE) + facet_wrap(~ gender)
+
+- Class: text
+  Output: facet_grid() permite mejorar la parcelas
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> ggplot(starwars, aes(x = height, y = mass)) + geom_point(aes(color = gender)) + geom_smooth(se = FALSE) + facet_grid(~ gender)
+  CorrectAnswer: ggplot(starwars, aes(x = height, y = mass)) + geom_point(aes(color = gender)) + geom_smooth(se = FALSE) + facet_grid(~ gender)
+  AnswerTests: omnitest(correctExpr='ggplot(starwars, aes(x = height, y = mass)) + geom_point(aes(color = gender)) + geom_smooth(se = FALSE) + facet_grid(~ gender)')
+  Hint: Ejecuta en Consola -> ggplot(starwars, aes(x = height, y = mass)) + geom_point(aes(color = gender)) + geom_smooth(se = FALSE) + facet_grid(~ gender)
+
+- Class: text
+  Output: Con facet_grid() la variable a la izquierda de la tilde se representara en las filas y la variable de la derecha se representaran las columnas
+
+- Class: text
+  Output: Realizemo un pequeño filtro para poder vizualisar mejor facet_grid()
+
+- Class: cmd_question
+  Output: Ejecuta en Consola; Filtro <- filter(starwars, species %in% c("Human","Droid"))
+  CorrectAnswer: Filtro <- filter(starwars, species %in% c("Human","Droid"))
+  AnswerTests: omnitest(correctExpr='Filtro <- filter(starwars, species %in% c("Human","Droid"))')
+  Hint: Ejecuta en Consola; Filtro <- filter(starwars, species %in% c("Human","Droid"))
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> ggplot(Filtro, aes(x = height, y = mass)) + geom_point(aes(color = gender)) + geom_smooth(se = FALSE) + facet_grid(species~ gender)
+  CorrectAnswer: ggplot(Filtro, aes(x = height, y = mass)) + geom_point(aes(color = gender)) + geom_smooth(se = FALSE) + facet_grid(species~ gender)
+  AnswerTests: omnitest(correctExpr='ggplot(Filtro, aes(x = height, y = mass)) + geom_point(aes(color = gender)) + geom_smooth(se = FALSE) + facet_grid(species~ gender)')
+  Hint: Ejecuta en Consola -> ggplot(Filtro, aes(x = height, y = mass)) + geom_point(aes(color = gender)) + geom_smooth(se = FALSE) + facet_grid(species~ gender)
+
+- Class: text
+  Output: ETIQUETAS Y ANOTACIONES. Son parte importante para hacer que una grafica sea comprensible.
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> ggplot(starwars, aes(x = gender, fill = species)) + geom_bar(position = "fill") + scale_y_continuous(breaks = seq(0,1, by = .2), labels = scales::percent) + labs(title = "Clasificacion starwars", subtitle = "Porcentaje del genero de las especies", x = "Porcentaje de Especies", y = "Generos", color = "species")
+  CorrectAnswer: ggplot(starwars, aes(x = gender, fill = species)) + geom_bar(position = "fill") + scale_y_continuous(breaks = seq(0,1, by = .2), labels = scales::percent) + labs(title = "Clasificacion starwars", subtitle = "Porcentaje del genero de las especies", x = "Porcentaje de Especies", y = "Generos", color = "species")
+  AnswerTests: omnitest(correctExpr='ggplot(starwars, aes(x = gender, fill = species)) + geom_bar(position = "fill") + scale_y_continuous(breaks = seq(0,1, by = .2), labels = scales::percent) + labs(title = "Clasificacion starwars", subtitle = "Porcentaje del genero de las especies", x = "Porcentaje de Especies", y = "Generos", color = "species")')
+  Hint: Ejecuta en Consola -> ggplot(starwars, aes(x = gender, fill = species)) + geom_bar(position = "fill") + scale_y_continuous(breaks = seq(0,1, by = .2), labels = scales::percent) + labs(title = "Clasificacion starwars", subtitle = "Porcentaje del genero de las especies", x = "Porcentaje de Especies", y = "Generos", color = "species")
+
+- Class: text
+  Output: Esto fue una introduccion al paquete ggplot, en el siguiente enlace podras ver mas funciones utiles. https://www.rstudio.com/wp-content/uploads/2015/04/ggplot2-spanish.pdf
