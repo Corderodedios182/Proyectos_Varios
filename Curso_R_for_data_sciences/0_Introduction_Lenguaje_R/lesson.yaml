@@ -1,0 +1,700 @@
+- Class: meta
+  Course: Curso
+  Lesson: Introduccion al Lenguaje R
+  Author: your name goes here
+  Type: Standard
+  Organization: your organization's name goes here
+  Version: 2.4.3
+
+- Class: text
+  Output: R es un lenguaje estadistico, eficiente para Ciencia de Datos.
+
+- Class: text
+  Output: Nor permite manipular, calcular, graficar, modelar datos.
+
+- Class: text
+  Output: En esta leccion nos introduciremos con las Bases del Lenguaje R.
+
+- Class: text
+  Output: Veremos Asignacion de Variables, tipos de datos, Vectores, listas, matrices, DataFrames, Condiciones Logicas, Ciclos for,while,if, escritura de funciones, y funciones basicas de R.
+
+- Class: text
+  Output: ASIGNACION DE VARIABLES ...
+
+- Class: text
+  Output: Asignaremos a "x" con los simbolos "<-" un vector "c()" del 1 al 10  
+
+- Class: cmd_question
+  Output: Ejecuta en Consola;  x <- c(1,2,3,4,5,6,7,8,9,10)
+  CorrectAnswer: x <- c(1,2,3,4,5,6,7,8,9,10)
+  AnswerTests: omnitest(correctExpr='x <- c(1,2,3,4,5,6,7,8,9,10)')
+  Hint: Ejecuta en Consola;    x <- c(1,2,3,4,5,6,7,8,9,10)
+
+- Class: cmd_question
+  Output: Ejecuta en Consola; x_1 <- "Hola Mundo!!!"
+  CorrectAnswer: x_1 <- "Hola Mundo!!!"
+  AnswerTests: omnitest(correctExpr='x_1 <- "Hola Mundo!!!"')
+  Hint: Ejecuta en Consola;  x_1 <- "Hola Mundo!!!"
+
+- Class: cmd_question
+  Output: Ejecuta en Consola; x_2 <- c("Frio", "Caliente")
+  CorrectAnswer: x_2 <- c("Frio", "Caliente")
+  AnswerTests: omnitest(correctExpr='x_2 <- c("Frio", "Caliente")')
+  Hint: Ejecuta en Consola;  x_2 <- c("Frio", "Caliente")
+
+- Class: text
+  Output: Ahora veamos nuestas asignaciones x, x_1, x_2 ...
+
+- Class: cmd_question
+  Output: Ejecuta en Consola; x
+  CorrectAnswer: x
+  AnswerTests: omnitest(correctExpr='x')
+  Hint: Ejecuta en Consola; x
+
+- Class: cmd_question
+  Output: Ejecuta en Consola; x_1 
+  CorrectAnswer: x_1
+  AnswerTests: omnitest(correctExpr='x_1')
+  Hint: Ejecuta en Consola; x_1
+
+- Class: cmd_question
+  Output: Ejecuta en Consola; x_2
+  CorrectAnswer: x_2
+  AnswerTests: omnitest(correctExpr='x_2')
+  Hint: Ejecuta en Consola; x_2
+
+- Class: text
+  Output: Podemos guardar distintos tipos de datos dentro de un vector o variable ya sean numericos, caracteres, flotantes, complejos, factores, etc...
+
+- Class: text
+  Output: TIPOS DE DATOS...
+
+- Class: text
+  Output: Tenemos datos numericos, flotantes, complejos, caracteres, categoricos (factor), booleanos (TRUE y FALSE), vectores, listas, matrices, diccionarios, dataframes, etc. Para familiarizarnos con los tipos de datos es buena practica preguntarle a R con la funcion class(). Veamos las clases de nuestras variables x,x_1,x_2
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> class(x)
+  CorrectAnswer: class(x)
+  AnswerTests: omnitest(correctExpr='class(x)')
+  Hint: Ejecuta en Consola -> class(x)
+
+- Class: text
+  Output: Funcion class() nos indica la clase de nuestro objeto o tipo de datos.
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> class(x_1)
+  CorrectAnswer: class(x_1)
+  AnswerTests: omnitest(correctExpr='class(x_1)')
+  Hint: Ejecuta en Consola -> class(x_1)
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> class(x_2)
+  CorrectAnswer: class(x_2)
+  AnswerTests: omnitest(correctExpr='class(x_2)')
+  Hint: Ejecuta en Consola -> class(x_2)
+
+- Class: text
+  Output: Preguntemosle a R sobre algunos tipos de datos con la familia de funciones is. (is.numeric(), is.character(), is.logical(),etc...)
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> is.numeric(x)
+  CorrectAnswer: is.numeric(x)
+  AnswerTests: omnitest(correctExpr='is.numeric(x)')
+  Hint: Ejecuta en Consola -> is.numeric(x)
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> is.character(x)
+  CorrectAnswer: is.character(x)
+  AnswerTests: omnitest(correctExpr='is.character(x)')
+  Hint: Ejecuta en Consola -> is.character(x)
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> is.character(x_1)
+  CorrectAnswer: is.character(x_1)
+  AnswerTests: omnitest(correctExpr='is.character(x_1)')
+  Hint: Ejecuta en Consola -> is.character(x_1)
+
+- Class: text
+  Output: Te habras percatado que la respuesta es TRUE o FALSE llamados booleanos, son de suma importancia para realizar condiciones logicas.
+
+- Class: text
+  Output: Para saber mas sobre cualquier funcion, existe la funcion help() nos dara una descripcion breve.
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> help(is)
+  CorrectAnswer: help(is)
+  AnswerTests: omnitest(correctExpr='help(is)')
+  Hint: Ejecuta en Consola -> help(is)
+
+- Class: text
+  Output: De igual forma podemos convertir el tipo de datos que mejor nos convenga trabajar, esto con la familia de funciones as. (as.numeric(), as.character()).
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> as.character(x)
+  CorrectAnswer: as.character(x)
+  AnswerTests: omnitest(correctExpr='as.character(x)')
+  Hint: Ejecuta en Consola -> as.character(x)
+  
+- Class: text
+  Output: Hemos convertido un vector numerico a caracteres.
+
+- Class: text
+  Output: Con el tiempo iras conociendo funciones que trabajan mejor con cierto tipos de datos, para esto es util conocer is. y as. 
+
+- Class: text
+  Output: VECTORES (Es una estructura de datos básica en R. Contiene elementos del mismo tipo. Los tipos de datos pueden ser lOgicos, enteros, dobles, de caracteres, complejos o sin procesar.)
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> x <- c(1,2,3,4,5,6,7,8,9,10)
+  CorrectAnswer: x <- c(1,2,3,4,5,6,7,8,9,10)
+  AnswerTests: omnitest(correctExpr='x <- c(1,2,3,4,5,6,7,8,9,10)')
+  Hint: Ejecuta en Consola -> x <- c(1,2,3,4,5,6,7,8,9,10)
+
+- Class: text
+  Output: Tenemos funciones que nos apoyan a manipular los diferentes tipos de objetos, veremos algunas funciones aplicadas a vectores.
+
+- Class: text
+  Output: Funcion seq() creara una secuencia de numeros del 1 al 10.
+
+- Class: cmd_question
+  Output: Ejecuta en Consola; x <- seq(1,10,by = 1)
+  CorrectAnswer: x <- seq(1,10,by = 1)
+  AnswerTests: omnitest(correctExpr='x <- seq(1,10,by = 1)')
+  Hint: Ejecuta en Consola; x <- seq(1,10,by = 1)
+
+- Class: cmd_question
+  Output: Ejecuta en Consola; x 
+  CorrectAnswer: x
+  AnswerTests: omnitest(correctExpr='x')
+  Hint: Ejecuta en Consola; x
+
+- Class: text
+  Output: Recuerda que una parte importante de un Cientico de Datos es ahorrar trabajo y esfuerzo.
+
+- Class: text
+  Output: Funcion rep(), repite elementos en un vector
+
+- Class: cmd_question
+  Output: Ejecuta en Consola; y <- rep(1:5,times = 2)
+  CorrectAnswer: y <- rep(1:5,times = 2)
+  AnswerTests: omnitest(correctExpr='y <- rep(1:5,times = 2)')
+  Hint: Ejecuta en Consola; y <- rep(1:5,times = 2)
+
+- Class: cmd_question
+  Output: Ejecuta en Consola; y
+  CorrectAnswer: y
+  AnswerTests: omnitest(correctExpr='y')
+  Hint: Ejecuta en Consola; y
+
+- Class: text
+  Output: Funcion sort(), ordena los elementos de un vector.
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> sort(x,decreasing = TRUE)
+  CorrectAnswer: sort(x,decreasing = TRUE)
+  AnswerTests: omnitest(correctExpr='sort(x,decreasing = TRUE)')
+  Hint: Ejecuta en Consola -> sort(x,decreasing = TRUE)
+
+- Class: text
+  Output: Te habras percatadao de algunos parametros dentro de las funciones (decreasing =, by =, times =), estos parametros varian dependiendo de la funcion enriqueciendo el uso.
+
+- Class: text
+  Output: Funcion rev(), coloca de manera inversa los elementos.
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> rev(x)
+  CorrectAnswer: rev(x)
+  AnswerTests: omnitest(correctExpr='rev(x)')
+  Hint: Ejecuta en Consola -> rev(x)
+
+- Class: text
+  Output: Funcion table(), cuenta el numero de elementos.
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> table(y)
+  CorrectAnswer: table(y)
+  AnswerTests: omnitest(correctExpr='table(y)')
+  Hint: Ejecuta en Consola -> table(y)
+
+- Class: text
+  Output: Funcion unique(), arroja los elementos unicos.
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> unique(y)
+  CorrectAnswer: unique(y)
+  AnswerTests: omnitest(correctExpr='unique(y)')
+  Hint: Ejecuta en Consola -> unique(y)
+
+- Class: text
+  Output: Funcion length(), numero de elementos.
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> length(y)
+  CorrectAnswer: length(y)
+  AnswerTests: omnitest(correctExpr='length(y)')
+  Hint: Ejecuta en Consola -> length(y)
+
+- Class: text
+  Output: Vimos un buen numero de funciones utiles para inspeccionar mejor nuestros vectores, ahora veamos un poco sobre seleccion de elementos de un vector...
+
+- Class: cmd_question
+  Output: Ejecuta en Consola; y
+  CorrectAnswer: y
+  AnswerTests: omnitest(correctExpr='y')
+  Hint: Ejecuta en Consola; y
+
+- Class: text
+  Output: Iremos seleccionando elementos dentro del vector 'y'
+  
+- Class: text
+  Output: Seleccion por posicion, seleccionemos el septimo elemento 
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> y[7]
+  CorrectAnswer: y[7]
+  AnswerTests: omnitest(correctExpr='y[7]')
+  Hint: Ejecuta en Consola -> y[7]
+ 
+- Class: text
+  Output: Todos menos el elemento 7
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> y[-7]
+  CorrectAnswer: y[-7]
+  AnswerTests: omnitest(correctExpr='y[-7]')
+  Hint: Ejecuta en Consola -> y[-7]
+
+- Class: text
+  Output: Elementos entre el rango 3:6
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> y[3:6]
+  CorrectAnswer: y[3:6]
+  AnswerTests: omnitest(correctExpr='y[3:6]')
+  Hint: Ejecuta en Consola -> y[3:6]
+
+- Class: text
+  Output: Elementos excepto el rango 3:6
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> y[-(3:6)]
+  CorrectAnswer: y[-(3:6)]
+  AnswerTests: omnitest(correctExpr='y[-(3:6)]')
+  Hint: Ejecuta en Consola -> y[-(3:6)]
+
+- Class: text
+  Output: Elementos 1 y 6
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> y[c(3,6)]
+  CorrectAnswer: y[c(3,6)]
+  AnswerTests: omnitest(correctExpr='y[c(3,6)]')
+  Hint: Ejecuta en Consola -> y[c(3,6)]
+
+- Class: text
+  Output: Seleccion por valores (Usaremos las respuestas booleanas TRUE y FALSE)
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> y > 3
+  CorrectAnswer: y > 3
+  AnswerTests: omnitest(correctExpr='y > 3')
+  Hint: Ejecuta en Consola -> y > 3
+
+- Class: text
+  Output: Observa que para cada valor del vector 'y' se pregunta si y > 3 arrojando FALSE y TRUE, utilizaremos estas respuestas para filtrar solo aquellos numeros que cumplan la condicion.
+
+- Class: text
+  Output: Elementos mayores a 3
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> y[y > 3]
+  CorrectAnswer: y[y > 3]
+  AnswerTests: omnitest(correctExpr='y[y > 3]')
+  Hint: Ejecuta en Consola -> y[y > 3]
+
+- Class: text
+  Output: Podemos realizar filtros mas complejos con logica de conjuntos utilizando los simbolos '&' (Y)  y '|' (O)
+
+- Class: text
+  Output: Seleccionemos valores mayores a 1 y menores a 5
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> y[y > 1 & y < 5]
+  CorrectAnswer: y[y > 1 & y < 5]
+  AnswerTests: omnitest(correctExpr='y[y > 1 & y < 5]')
+  Hint: Ejecuta en Consola -> y[y > 1 & y < 5]
+
+- Class: text
+  Output: Elementos que pertenecen a un conjunto, utilizando '%in'. En el siguiente ejemplo preguntaremos que elementos de y pertenecen a c(3,5)
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> y[y %in% c(3,5)]
+  CorrectAnswer: y[y %in% c(3,5)]
+  AnswerTests: omnitest(correctExpr='y[y %in% c(3,5)]')
+  Hint: Ejecuta en Consola -> y[y %in% c(3,5)]
+
+- Class: text
+  Output: LISTAS (Dentro de los objetos de R las listas se puede pensar como un vector donde, cada elemento es un objeto y estos pueden ser de tipos totalmente diferente. Conjunto de vectores.
+
+- Class: cmd_question
+  Output: Ejecuta en Consola; L <- list(x = 1:10, y = c("a","b"))
+  CorrectAnswer: L <- list(x = 1:10, y = c("a","b"))
+  AnswerTests: omnitest(correctExpr='L <- list(x = 1:10, y = c("a","b"))')
+  Hint: Ejecuta en Consola -> L <- list(x = 1:10, y = c("a","b"))
+
+- Class: text
+  Output: Los elementos de las listas pueden ser vectores de diferentes longitudes.
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> L
+  CorrectAnswer: L
+  AnswerTests: omnitest(correctExpr='L')
+  Hint: Ejecuta en Consola -> L
+
+- Class: text
+  Output: Seleccion del segundo vector de la lista
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> L[[2]]
+  CorrectAnswer: L[[2]]
+  AnswerTests: omnitest(correctExpr='L[[2]]')
+  Hint: Ejecuta en Consola -> L[[2]]
+
+- Class: text
+  Output: Selecion espeficica de un elemento
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> L[[2]][1]
+  CorrectAnswer: L[[2]][1]
+  AnswerTests: omnitest(correctExpr='L[[2]][1]')
+  Hint: Ejecuta en Consola -> L[[2]][1]
+
+- Class: text
+  Output: Cada elemento tiene su nombre, otra forma de seleccionar un elemento es con el signo '$'
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> L$y
+  CorrectAnswer: L$y
+  AnswerTests: omnitest(correctExpr='L$y')
+  Hint: Ejecuta en Consola -> L$y
+
+- Class: text
+  Output: Otra forma de seleccionar por el nombre 
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> L["y"]
+  CorrectAnswer: L["y"]
+  AnswerTests: omnitest(correctExpr='L["y"]')
+  Hint: Ejecuta en Consola -> L["y"]
+
+- Class: text
+  Output: La listas juegan un papel importante a la hora de correr multiples modelos de Machine Learning, imagina almacenar los resultados de distintos modelos en listas esto facilita enormemente el analisis.
+
+- Class: text
+  Output: MATRICES (Conjunto de elementos bidimensional)
+
+- Class: text
+  Output: Las matrices son muy similares a la estructura de una Base de Datos.
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> M <- matrix(x, nrow = 5, ncol = 2)
+  CorrectAnswer: M <- matrix(x, nrow = 5, ncol = 2)
+  AnswerTests: omnitest(correctExpr='M <- matrix(x, nrow = 5, ncol = 2)')
+  Hint: Ejecuta en Consola -> M <- matrix(x, nrow = 5, ncol = 2)
+
+- Class: text
+  Output: Hemos creado una matriz de 2 columnas y 5 filas.
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> M
+  CorrectAnswer: M
+  AnswerTests: omnitest(correctExpr='M')
+  Hint: Ejecuta en Consola -> M
+
+- Class: text
+  Output: Seleccion de elementos. Ten en cuenta la siguiente estructura; Matriz[filas, columnas]
+
+- Class: text
+  Output: Seleccionando la primera fila
+  
+- Class: cmd_question
+  Output: Ejecuta en Consola -> M[1,]
+  CorrectAnswer: M[1,]
+  AnswerTests: omnitest(correctExpr='M[1,]')
+  Hint: Ejecuta en Consola -> M[1,]
+
+- Class: text
+  Output: Seleccion de columna
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> M[,1]
+  CorrectAnswer: M[,1]
+  AnswerTests: omnitest(correctExpr='M[,1]')
+  Hint: Ejecuta en Consola -> M[,1]
+
+- Class: text
+  Output: Seleccion fila y columna
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> M[1,1]
+  CorrectAnswer: M[1,1]
+  AnswerTests: omnitest(correctExpr='M[1,1]')
+  Hint: Ejecuta en Consola -> M[1,1]
+
+- Class: text
+  Output: Transpuesta de una Matriz
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> t(M)
+  CorrectAnswer: t(M)
+  AnswerTests: omnitest(correctExpr='t(M)')
+  Hint: Ejecuta en Consola -> t(M)
+
+- Class: text
+  Output: Multiplicacion de matrices
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> M*M
+  CorrectAnswer: M*M
+  AnswerTests: omnitest(correctExpr='M*M')
+  Hint: Ejecuta en Consola -> M*M
+
+- Class: text
+  Output: DATA FRAMES (Un marco de datos es una tabla o una estructura de matriz bidimensional en la que cada columna contiene valores de una variable y cada fila contiene un conjunto de valores de cada columna.)
+
+- Class: cmd_question
+  Output: Ejecuta en Consola; df <- data.frame(x = 1:3, y = c("uno","dos","tres"))
+  CorrectAnswer: df <- data.frame(x = 1:3, y = c("uno","dos","tres"))
+  AnswerTests: omnitest(correctExpr='df <- data.frame(x = 1:3, y = c("uno","dos","tres"))')
+  Hint: Ejecuta en Consola; df <- data.frame(x = 1:3, y = c("uno","dos","tres"))
+
+- Class: text
+  Output: Los dataframe son la estructura mas ocupada en R, veamos como seleccionar, filtrar, agregar nuevos datos y funciones que nos apoyen a analizar.
+
+- Class: text
+  Output: Seleccion de filas y colummas ( igual que una matriz df[filas, columnas] )
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> df[1,2]
+  CorrectAnswer: df[1,2]
+  AnswerTests: omnitest(correctExpr='df[1,2]')
+  Hint: Ejecuta en Consola -> df[1,2]
+
+- Class: text
+  Output: Funciones sobre dataframes, conteo del numero de filas (nrow()), conteo del numero de columnas (ncol()), tipos de datos y nombre de las columnas (str()).
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> nrow(df)
+  CorrectAnswer: nrow(df)
+  AnswerTests: omnitest(correctExpr='nrow(df)')
+  Hint: Ejecuta en Consola -> nrow(df)
+
+- Class: text
+  Output: Otra manera de seleccionar una columna es con el simbolo "$", solo podras seleccionar una columna.
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> df$x
+  CorrectAnswer: df$x
+  AnswerTests: omnitest(correctExpr='df$x')
+  Hint: Ejecuta en Consola -> df$x
+
+- Class: text
+  Output: Funciones sobre los data frames, sum(), min(), max(), mean(). Apliquemos estas funciones a una columna en especifico. Ahora trabajaremos con un conjunto precargado de R llamado "starwars".
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> head(starwars)
+  CorrectAnswer: head(starwars)
+  AnswerTests: omnitest(correctExpr='head(starwars)')
+  Hint: Ejecuta en Consola -> head(starwars)
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> sum(starwars$height)
+  CorrectAnswer: sum(starwars$height)
+  AnswerTests: omnitest(correctExpr='sum(starwars$height)')
+  Hint: Ejecuta en Consola -> sum(starwars$height)
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> max(starwars$height)
+  CorrectAnswer: max(starwars$height)
+  AnswerTests: omnitest(correctExpr='max(starwars$height)')
+  Hint: Ejecuta en Consola -> max(starwars$height)
+
+- Class: text
+  Output: Creando nuevas columnas, creemos una columna que se llame IDC = height / mass
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> starwars$IDC = heigth / mass
+  CorrectAnswer: starwars$IDC = heigth / mass
+  AnswerTests: omnitest(correctExpr='starwars$IDC = heigth / mass')
+  Hint: Ejecuta en Consola -> starwars$IDC = heigth / mass
+
+- Class: text
+  Output: Filtrado de datos, antes de comenzar a filtrar es importante conocer las CONDICIONES LOGICAS...
+
+- Class: text
+  Output: En resumen ya sabemos los diferentes tipos de datos, vectores, matrices, listas y dataframes. Ahora veamos como aplicar condiciones logicas, para manipular nuestros datos. Primero veamos las condiciones logicas nos arrojan TRUE = 1 y FALSE = 0
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> 1 == 1
+  CorrectAnswer: 1 == 1
+  AnswerTests: omnitest(correctExpr='1 == 1')
+  Hint: Ejecuta en Consola -> 1 == 1
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> 1 != 1
+  CorrectAnswer: 1 != 1
+  AnswerTests: omnitest(correctExpr='1 != 1')
+  Hint: Ejecuta en Consola -> 1 != 1
+
+- Class: text
+  Output: Tenemos varios simbolos que nos ayudan a crear condiciones logicas, igual "==", mayor y menor "> y <", podemos colocar un numero determinado de condiciones con y (&), y ó (|)
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> 1 != 1 & 2 > 1
+  CorrectAnswer: 1 != 1 & 2 > 1
+  AnswerTests: omnitest(correctExpr='1 != 1 & 2 > 1')
+  Hint: Ejecuta en Consola -> 1 != 1 & 2 > 1
+
+- Class: text
+  Output: Con ayuda de las condiciones podemos realizar filtros sobre nuestros datos tomando los valores TRUE que cumplan la condicion logica. Primero veamos la condicion logica sobre una columna para observar el numero de TRUE y FALSE
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> starwars$height > 25
+  CorrectAnswer: Ejecuta en Consola -> starwars$height > 25
+  AnswerTests: omnitest(correctExpr='starwars$height > 25')
+  Hint: Ejecuta en Consola -> starwars$height > 25
+
+- Class: text
+  Output: Ocupando esta salida de TRUE y FASLE, podemos seleccionar solo los valores TRUE
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> starwars[starwars$height > 150]
+  CorrectAnswer: starwars[starwars$height > 150]
+  AnswerTests: omnitest(correctExpr='starwars[starwars$height > 150]')
+  Hint: Ejecuta en Consola -> starwars[starwars$height > 150]
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> starwars[starwars$height > 150 & starwars$mass > 70]
+  CorrectAnswer: starwars[starwars$height > 150 & starwars$mass > 70]
+  AnswerTests: omnitest(correctExpr='starwars[starwars$height > 150 & starwars$mass > 70]')
+  Hint: Ejecuta en Consola -> starwars[starwars$height > 150 & starwars$mass > 70]
+
+- Class: text
+  Output: Aveces necesitamos de tareas repetetivas, condicionales, para esto existen las estructuras de ciclo ( for ), bucles ( whiles ), Condiciones ( if ), creacion de nuestras propias funciones.
+
+- Class: text
+  Output: for (Usado para repetir un conjunto de instrucciones un numero finito de veces)
+
+- Class: text
+  Output: Primero es necesario saber el numero de iteraciones que deseamos (i in 1:10) y entre {} instrucciones que se repetiran. 
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> for(i in 1:10){print(i)}
+  CorrectAnswer: for(i in 1:10){print(i)}
+  AnswerTests: omnitest(correctExpr='for(i in 1:10){print(i)}')
+  Hint: Ejecuta en Consola -> for(i in 1:10){print(i)}
+
+- Class: text
+  Output: while (Es similar al for, nos permite ejecutar iteraciones con el detalle que el codigo se ejecutara colocando una sentencia logica y se detendra cuando esta sea FALSE)
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> j = 0
+  CorrectAnswer: j = 0
+  AnswerTests: omnitest(correctExpr='j = 0')
+  Hint: Ejecuta en Consola -> j = 0
+
+- Class: text
+  Output: Sentencia logia (j < 5) en un principio es TRUE.
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> j < 5
+  CorrectAnswer: j < 5
+  AnswerTests: omnitest(correctExpr='j < 5')
+  Hint: Ejecuta en Consola -> j < 5
+
+- Class: text
+  Output: Conforme vallamos iterando sumaremos 1 a j y volvera a preguntar (j < 5). Deteniendo el proceso cuando esta condicion ya no se cumpla (arroja un FALSE)
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> while (j < 5) {
+  print(j)
+  j <- j + 1
+}
+
+  CorrectAnswer: while (j < 5) {
+  print(j)
+  j <- j + 1
+}
+
+  AnswerTests: omnitest(correctExpr='while (j < 5) {
+  print(j)
+  j <- j + 1
+}
+')
+  Hint: Ejecuta en Consola -> while (j < 5) {
+  print(j)
+  j <- j + 1
+}
+
+- Class: text
+  Output: if (Usada para tomar decisiones, evalua basicamente una operaciones logica, es decir una expresion que de como resultado TRUE o FALSE y ejecuta la pieza de codigo siguiente siempre y cuando el resultado sea verdadero)
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> if(i > 3){
+  print("Mayor a 3")
+}else{
+  print("Menor a 3")
+}
+  CorrectAnswer: if(i > 3){
+  print("Mayor a 3")
+}else{
+  print("Menor a 3")
+}
+  AnswerTests: omnitest(correctExpr='if(i > 3){
+  print("Mayor a 3")
+}else{
+  print("Menor a 3")
+}')
+  Hint: Ejecuta en Consola -> if(i > 3){
+  print("Mayor a 3")
+}else{
+  print("Menor a 3")
+}
+
+- Class: text
+  Output: Funciones (Una vez dominado el lenguaje R, es poderoso crear nuestras propias funciones con nuestras reglas)
+
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> Operacion <- function(x,y){
+  x <- paste0((x/y)*100,"%")
+  return(x)
+  }
+  CorrectAnswer: Operacion <- function(x,y){
+  x <- paste0((x/y)*100,"%")
+  return(x)
+  }
+  AnswerTests: omnitest(correctExpr='Operacion <- function(x,y){
+  x <- paste0((x/y)*100,"%")
+  return(x)
+  }')
+  Hint: Ejecuta en Consola -> Operacion <- function(x,y){
+  x <- paste0((x/y)*100,"%")
+  return(x)
+  }
+
+- Class: text
+  Output: Ahora ocupemos nuestra funcion. 
+
+- Class: cmd_question
+  Output: Ejecuta en Consola -> Operacion(10,100)
+  CorrectAnswer: Operacion(10,100)
+  AnswerTests: omnitest(correctExpr='Operacion(10,100)')
+  Hint: Ejecuta en Consola -> Operacion(10,100)
+
+- Class: text
+  Output: Con la practica conoceremos un mayor numero de funciones, haciendo mas eficiente la escritura de codigo.
+
+- Class: text
+  Output: Este capitulo fue una introduccion al Lenguaje R, las siguientes lecciones te mostrare paqueterias muy utiles para Ciencias de Datos.
+
